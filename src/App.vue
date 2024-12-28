@@ -48,5 +48,6 @@ import SideBar from "./components/SideBar.vue";
   flex: 1;
   padding: 20px;
   background-color: #f4f5f7;
+  height: calc(100vh - 56px);
 }
 </style>
