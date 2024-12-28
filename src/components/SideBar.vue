@@ -98,8 +98,6 @@ const setActive = (item: string) => {
 <style lang="scss">
 .sidebar {
   width: 56px;
-  height: 100vh;
-  // background-color: #2c2c2c;
   position: fixed;
   left: 0;
   top: 0;
