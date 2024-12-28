@@ -1,6 +1,16 @@
 <script setup lang="ts">
+// dependencies
+import { ref } from "vue";
 import { Icon } from "@iconify/vue";
 
+// data
+import navRoutes from "../data/navRoutes";
+
+const activeItem = ref(navRoutes[0].name);
+
+const setActive = (item: string) => {
+  activeItem.value = item;
+};
 </script>
 
 <template>
@@ -8,46 +18,19 @@ import { Icon } from "@iconify/vue";
     <div class="navbar__left">
       <!-- App switcher and logo -->
       <button class="navbar__app-switcher">
-        <Icon icon="gg:menu-grid-r" height="30"  />
+        <Icon icon="gg:menu-grid-r" height="30" />
       </button>
       <div class="navbar__logo">
-        <Icon icon="logos:jira" height="20" width="20" /> <span>JIRA</span>
+        <Icon icon="logos:jira" height="20" width="20" />
+        JIRA
       </div>
 
       <!-- Main navigation items -->
       <ul class="navbar__items">
-        <li class="navbar__item">
-          <a href="#" class="navbar__link">Your work</a>
-        </li>
-        <li class="navbar__item navbar__item--has-dropdown">
-          <a href="#" class="navbar__link">
-            Projects
-            <Icon icon="mingcute:down-fill" />
-          </a>
-        </li>
-        <li class="navbar__item navbar__item--has-dropdown">
-          <a href="#" class="navbar__link">
-            Filters
-            <Icon icon="mingcute:down-fill" />
-          </a>
-        </li>
-        <li class="navbar__item navbar__item--has-dropdown">
-          <a href="#" class="navbar__link">
-            Dashboards
-            <Icon icon="mingcute:down-fill" />
-          </a>
-        </li>
-        <li class="navbar__item">
-          <a href="#" class="navbar__link">
-            People
-          </a>
-
-        </li>
-        <li class="navbar__item navbar__item--has-dropdown">
-          <a href="#" class="navbar__link">
-            Apps
-            <Icon icon="mingcute:down-fill" />
-          </a>
+        <li class="navbar__item" v-for="navLink in navRoutes">
+          <router-link :to="navLink.route" class="navbar__link"
+            :class="{ 'navbar__link--active': activeItem === navLink.name }"
+            @click="setActive(navLink.name)">{{ navLink.name }}</router-link>
         </li>
       </ul>
 
@@ -112,14 +95,7 @@ import { Icon } from "@iconify/vue";
 
   &__logo {
     display: contents;
-    // width: 24px;
-    // height: 24px;
-    // margin-right: 8px;
-
-    img {
-      width: 100%;
-      height: 100%;
-    }
+    font-size: larger;
   }
 
   &__items {
@@ -134,17 +110,7 @@ import { Icon } from "@iconify/vue";
     position: relative;
 
     &--has-dropdown {
-      // .navbar__link {
-        // padding-right: 24px;
-
-        // i {
-        //   position: absolute;
-        //   right: 8px;
-        //   top: 50%;
-        //   transform: translateY(-50%);
-        //   font-size: 12px;
-        // }
-      // }
+      // TODO: Add dropdown styles
     }
   }
 
@@ -157,9 +123,24 @@ import { Icon } from "@iconify/vue";
     border-radius: 3px;
     font-size: 14px;
     font-weight: 500;
+    position: relative;
 
     &:hover {
       background-color: #f4f5f7;
+    }
+
+    &--active {
+      color: var(--primary-color);
+
+      &::after {
+        content: "";
+        position: absolute;
+        bottom: -1px;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background-color: var(--primary-color);
+      }
     }
   }
 
