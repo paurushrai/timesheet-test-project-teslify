@@ -27,10 +27,26 @@ const setActive = (item: string) => {
 
       <!-- Main navigation items -->
       <ul class="navbar__items">
-        <li class="navbar__item" v-for="navLink in navRoutes">
-          <router-link :to="navLink.route" class="navbar__link"
+        <li
+          class="navbar__item"
+          v-for="navLink in navRoutes"
+          :key="navLink.name"
+        >
+          <router-link
+            :to="navLink.route"
+            class="navbar__link"
             :class="{ 'navbar__link--active': activeItem === navLink.name }"
-            @click="setActive(navLink.name)">{{ navLink.name }}</router-link>
+            @click="setActive(navLink.name)"
+          >
+            {{ navLink.name }}
+            <Icon
+            v-if="navLink.subRoute && navLink.subRoute.length"
+            icon="mingcute:down-fill"
+            height="20"
+            width="20"
+            class="navbar__icon"
+          />
+          </router-link>
         </li>
       </ul>
 

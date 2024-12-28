@@ -2,20 +2,6 @@ const navRoutes = [
   {
     name: "Your Work",
     route: "/YourWork",
-    subRoute: [
-      {
-        name: "Dashboard",
-        route: "/YourWork/Dashboard",
-      },
-      {
-        name: "Reports",
-        route: "/YourWork/Reports",
-      },
-      {
-        name: "Settings",
-        route: "/YourWork/Settings",
-      },
-    ],
   },
   {
     name: "Projects",
@@ -66,16 +52,6 @@ const navRoutes = [
   {
     name: "People",
     route: "/People",
-    subRoute: [
-      {
-        name: "Team",
-        route: "/People/Team",
-      },
-      {
-        name: "Customers",
-        route: "/People/Customers",
-      },
-    ],
   },
   {
     name: "Apps",
