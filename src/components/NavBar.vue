@@ -2,6 +2,7 @@
 // dependencies
 import { ref } from "vue";
 import { Icon } from "@iconify/vue";
+import CommonButton from "./CommonButton.vue";
 
 // data
 import navRoutes from "../data/navRoutes";
@@ -53,7 +54,7 @@ const setActive = (item: string) => {
       </ul>
 
       <!-- Create button -->
-      <button class="navbar__create-btn">Create</button>
+      <CommonButton size="xsm">Create</CommonButton>
     </div>
 
     <div class="navbar__right">
@@ -157,20 +158,6 @@ const setActive = (item: string) => {
         height: 2px;
         background-color: var(--primary-color);
       }
-    }
-  }
-
-  &__create-btn {
-    padding: 6px 12px;
-    background-color: #0052cc;
-    color: white;
-    border: none;
-    border-radius: 3px;
-    font-weight: 500;
-    cursor: pointer;
-
-    &:hover {
-      background-color: #0065ff;
     }
   }
 
