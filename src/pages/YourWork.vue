@@ -4,36 +4,68 @@ import { ref } from "vue";
 import { Icon } from "@iconify/vue";
 import Avatar from "../components/Avatar.vue";
 import TimeLog from "../components/Modals/TimeLog.vue";
-import TimeFrameDropdown from "../components/TimeFrameDropdown.vue";
-import CommonButton from '../components/CommonButton.vue';
-
+import CommonDropdown from "../components/CommonDropdown.vue";
+import CommonButton from "../components/CommonButton.vue";
+import DatePicker from "../components/DatePicker.vue";
 
 const userName = ref("Divya Shah");
 const showModal = ref(false);
+// Simple string options
+const timeOptions = ["Days", "Weeks", "Months", "Year"];
 
+// Or object options for more complex cases
+const groupingOptions = [
+  { id: "issues", label: "Issues" },
+  { id: "epics", label: "Epics" },
+  { id: "assignee", label: "Assignee" },
+  { id: "reporter", label: "Reporter" },
+  { id: "project", label: "Project" },
+  { id: "label", label: "Label" },
+  { id: "sprint", label: "Sprint" },
+  { id: "status", label: "Status" },
+  { id: "priority", label: "Priority" },
+  { id: "type", label: "Type" },
+  { id: "created", label: "Created" },
+  { id: "updated", label: "Updated" },
+  { id: "resolved", label: "Resolved" },
+  { id: "completed", label: "Completed" },
+];
 const handleClose = () => {
   showModal.value = false;
 };
 
 const handleLogTime = () => {
   showModal.value = true;
-}
+};
 
 const handleSubmit = (data: any) => {
   console.log("Submitted data:", data);
   showModal.value = false;
 };
+
+const handleTimeFrameSelection = (value: string) => {
+  console.log("Selected:", value);
+};
+
+const handleSelectedGroupBy = (value: any) => {
+  console.log("Selected:", value);
+};
 </script>
 
 <template>
-  <div class="your-work">
+  <div class="your-work-container">
     <header class="header">
       <div class="user-info">
         <Avatar />
         <span class="user-name">{{ userName }}</span>
       </div>
       <div class="controls">
-        <TimeFrameDropdown />
+        <CommonDropdown
+          :options="timeOptions"
+          @option-selected="handleTimeFrameSelection"
+          width="100px"
+        />
+
         <CommonButton @click="handleLogTime" size="sm">Log Time</CommonButton>
         <TimeLog
           :is-open="showModal"
@@ -50,15 +82,27 @@ const handleSubmit = (data: any) => {
         </button>
       </div>
     </header>
+    <div class="filters">
+      <DatePicker />
+      <div class="filters__group">
+        <span>Group by</span>
+        <CommonDropdown
+          :options="groupingOptions"
+          @option-selected="handleSelectedGroupBy"
+          width="160px"
+        />
+      </div>
+    </div>
   </div>
 </template>
 
 <style lang="scss">
-.your-work {
+.your-work-container {
   .header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding-bottom: 20px;
 
     .user-info {
       display: flex;
@@ -100,6 +144,16 @@ const handleSubmit = (data: any) => {
           padding: 0px 3px;
         }
       }
+    }
+  }
+
+  .filters {
+    display: flex;
+
+    .filters__group {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
     }
   }
 }
