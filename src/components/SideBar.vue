@@ -1,8 +1,9 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import { Icon } from "@iconify/vue";
+import sideNavRoutes from "../data/sideNavRoutes";
 
-const activeItem = ref("tasks");
+const activeItem = ref("");
 
 const setActive = (item: string) => {
   activeItem.value = item;
@@ -13,83 +14,33 @@ const setActive = (item: string) => {
   <aside class="sidebar">
     <nav class="sidebar__nav">
       <ul class="sidebar__list">
-        <!-- Tasks/Checkmark -->
-        <li class="sidebar__item">
-          <a
-            href="#"
+        <li
+          class="sidebar__item"
+          v-for="link in sideNavRoutes"
+          :key="link.title"
+        >
+          <router-link
+            :to="link.route"
             class="sidebar__link"
-            :class="{ 'sidebar__link--active': activeItem === 'tasks' }"
-            @click="setActive('tasks')"
+            :class="{ 'sidebar__link--active': activeItem === link.title }"
+            @click="setActive(link.title)"
           >
-            <Icon
-              icon="fluent:calendar-todo-32-light"
-              height="20"
-              class="sidebar__icon"
-            />
-
-            <span class="sidebar__tooltip">Tasks</span>
-          </a>
-        </li>
-
-        <!-- Documents -->
-        <li class="sidebar__item">
-          <a
-            href="#"
-            class="sidebar__link"
-            :class="{ 'sidebar__link--active': activeItem === 'documents' }"
-            @click="setActive('documents')"
-          >
-            <Icon
-              icon="mdi:clipboard-text-history"
-              height="20"
-              class="sidebar__icon"
-            />
-            <span class="sidebar__tooltip">Documents</span>
-          </a>
-        </li>
-
-        <!-- Team -->
-        <li class="sidebar__item">
-          <a
-            href="#"
-            class="sidebar__link"
-            :class="{ 'sidebar__link--active': activeItem === 'team' }"
-            @click="setActive('team')"
-          >
-            <Icon icon="ri:team-fill" height="20" class="sidebar__icon" />
-            <span class="sidebar__tooltip">Team</span>
-          </a>
-        </li>
-
-        <!-- Settings -->
-        <li class="sidebar__item">
-          <a
-            href="#"
-            class="sidebar__link"
-            :class="{ 'sidebar__link--active': activeItem === 'settings' }"
-            @click="setActive('settings')"
-          >
-            <Icon
-              icon="weui:setting-filled"
-              height="20"
-              class="sidebar__icon"
-            />
-            <span class="sidebar__tooltip">Settings</span>
-          </a>
+            <Icon :icon="link.icon" height="25" width="25" class="sidebar__icon" />
+            <span class="sidebar__tooltip">{{ link.title }}</span>
+          </router-link>
         </li>
       </ul>
 
-      <!-- Help at bottom -->
       <div class="sidebar__bottom">
-        <a
-          href="#"
+        <router-link
+          to="#"
           class="sidebar__link"
-          :class="{ 'sidebar__link--active': activeItem === 'help' }"
-          @click="setActive('help')"
+          :class="{ 'sidebar__link--active': activeItem === 'Help' }"
+          @click="setActive('Help')"
         >
           <Icon icon="mingcute:question-fill" height="25" width="25" />
           <span class="sidebar__tooltip">Help</span>
-        </a>
+        </router-link>
       </div>
     </nav>
   </aside>
