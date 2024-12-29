@@ -6,6 +6,8 @@ import { Icon } from "@iconify/vue";
 // data
 import navRoutes from "../data/navRoutes";
 
+import Avatar from "./Avatar.vue";
+
 const activeItem = ref(navRoutes[0].name);
 
 const setActive = (item: string) => {
@@ -72,9 +74,7 @@ const setActive = (item: string) => {
         <button class="navbar__icon-btn">
           <Icon icon="weui:setting-filled" height="25" width="25" />
         </button>
-        <button class="navbar__avatar">
-          <img src="/src/assets/avatar.jpeg" alt="User avatar" />
-        </button>
+        <Avatar />
       </div>
     </div>
   </nav>
@@ -225,22 +225,6 @@ const setActive = (item: string) => {
 
     &:hover {
       background-color: #f4f5f7;
-    }
-  }
-
-  &__avatar {
-    width: 32px;
-    height: 32px;
-    padding: 0;
-    border: none;
-    border-radius: 50%;
-    overflow: hidden;
-    cursor: pointer;
-
-    img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
     }
   }
 }
