@@ -19,7 +19,7 @@ const selectOption = (option: any) => {
 };
 
 // Handle click outside
-const handleClickOutside = (e) => {
+const handleClickOutside = (e:any) => {
   if (!e.target.closest(".dropdown-container")) {
     isOpen.value = false;
   }
