@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import { Icon } from "@iconify/vue";
+import CommonButton from "../CommonButton.vue";
 
 interface Props {
   isOpen: boolean;
@@ -109,18 +110,8 @@ const handleClose = () => {
       </div>
 
       <div class="modal__footer">
-        <button
-          class="modal__button modal__button--secondary"
-          @click="handleClose"
-        >
-          Cancel
-        </button>
-        <button
-          class="modal__button modal__button--primary"
-          @click="handleSubmit"
-        >
-          Log time
-        </button>
+        <CommonButton variant="secondary" size="sm" @click="handleClose">Cancel</CommonButton>
+        <CommonButton variant="primary" size="sm" @click="handleSubmit">Log Time</CommonButton>
       </div>
     </div>
   </div>
@@ -223,33 +214,6 @@ const handleClose = () => {
     display: flex;
     justify-content: flex-end;
     gap: 12px;
-  }
-
-  &__button {
-    padding: 8px 16px;
-    border-radius: 3px;
-    font-size: 14px;
-    font-weight: 500;
-    cursor: pointer;
-    border: none;
-
-    &--primary {
-      background-color: #0052cc;
-      color: white;
-
-      &:hover {
-        background-color: #0065ff;
-      }
-    }
-
-    &--secondary {
-      background-color: transparent;
-      color: #42526e;
-
-      &:hover {
-        background-color: #f4f5f7;
-      }
-    }
   }
 }
 </style>
