@@ -60,11 +60,11 @@ const emit = defineEmits<{
     border: none;
 
     &:hover:not(:disabled) {
-      background: #3972c7;
+      background: #2a63f6;
     }
 
     &:active:not(:disabled) {
-      background: #6ea3ed;
+      background: #73a5ed;
     }
   }
 
