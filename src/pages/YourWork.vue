@@ -3,10 +3,26 @@
 import { ref } from "vue";
 import { Icon } from "@iconify/vue";
 import Avatar from "../components/Avatar.vue";
+import TimeLog from "../components/Modals/TimeLog.vue";
+import TimeFrameDropdown from "../components/TimeFrameDropdown.vue";
+import CommonButton from '../components/CommonButton.vue';
+
 
 const userName = ref("Divya Shah");
-const selectedTimeframe = ref("days");
+const showModal = ref(false);
 
+const handleClose = () => {
+  showModal.value = false;
+};
+
+const handleLogTime = () => {
+  showModal.value = true;
+}
+
+const handleSubmit = (data: any) => {
+  console.log("Submitted data:", data);
+  showModal.value = false;
+};
 </script>
 
 <template>
@@ -17,10 +33,13 @@ const selectedTimeframe = ref("days");
         <span class="user-name">{{ userName }}</span>
       </div>
       <div class="controls">
-        <select v-model="selectedTimeframe" class="timeframe-select">
-          <option value="days">Days</option>
-        </select>
-        <button class="log-time-btn">Log time</button>
+        <TimeFrameDropdown />
+        <CommonButton @click="handleLogTime" size="sm">Log Time</CommonButton>
+        <TimeLog
+          :is-open="showModal"
+          @close="handleClose"
+          @submit="handleSubmit"
+        />
         <button class="more-btn">
           <Icon
             icon="ph:dots-three-outline-fill"
@@ -53,7 +72,7 @@ const selectedTimeframe = ref("days");
 
     .controls {
       display: flex;
-      gap: 0.5rem;
+      gap: 1rem;
 
       .log-time-btn {
         background-color: #0052cc;
@@ -78,7 +97,7 @@ const selectedTimeframe = ref("days");
         &__icon {
           width: 100%;
           height: 100%;
-          padding: 0px 2px;
+          padding: 0px 3px;
         }
       }
     }
