@@ -86,12 +86,12 @@ const handleSelectedGroupBy = (value: any) => {
       <DatePicker />
       <div class="filters__group">
         <span>Group by</span>
-        <CommonDropdown
-          :options="groupingOptions"
-          @option-selected="handleSelectedGroupBy"
-          width="160px"
-        />
-      </div>
+          <CommonDropdown
+            :options="groupingOptions"
+            @option-selected="handleSelectedGroupBy"
+            width="160px"
+          />
+        </div>
     </div>
   </div>
 </template>
@@ -149,11 +149,13 @@ const handleSelectedGroupBy = (value: any) => {
 
   .filters {
     display: flex;
+    gap: 2rem;
 
     .filters__group {
       display: flex;
-      gap: 1rem;
+      gap: 0.5rem;
       align-items: center;
+      font-size: 12px;
     }
   }
 }
