@@ -1,6 +1,6 @@
 <script setup lang="ts">
 // dependencies
-import { ref } from "vue";
+import { ref, onMounted } from "vue";
 import { Icon } from "@iconify/vue";
 import CommonButton from "./CommonButton.vue";
 
@@ -8,12 +8,18 @@ import CommonButton from "./CommonButton.vue";
 import navRoutes from "../data/navRoutes";
 
 import Avatar from "./Avatar.vue";
+import router from "../router";
 
 const activeItem = ref(navRoutes[0].name);
 
 const setActive = (item: string) => {
   activeItem.value = item;
+  router.push("/YourWork");
 };
+
+onMounted(() => {
+  router.push("/YourWork");
+});
 </script>
 
 <template>
