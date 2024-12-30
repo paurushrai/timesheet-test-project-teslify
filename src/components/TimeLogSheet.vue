@@ -250,12 +250,12 @@ const getTotalForDay = (day: Day) => {
       }
 
       &.highlighted-cell {
-        background-color: #dbeafe;
+        background-color: #bad3fb;
       }
     }
 
     tr.highlighted-row {
-      background-color: #f0f7ff;
+      background-color: #ebf2fe;
 
       .time-cell:not(.highlighted-cell) {
         background-color: #f0f7ff;
