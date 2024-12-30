@@ -5,7 +5,7 @@
         <tr>
           <th class="issue-header">Issue</th>
           <th class="logged-header">Logged</th>
-          <template v-for="(day, index) in days" :key="index">
+          <template v-for="(day) in days" :key="index">
             <th
               :class="[
                 'day-header',
@@ -54,7 +54,7 @@
         <tr class="total-row">
           <td>Total</td>
           <td>73.75</td>
-          <template v-for="(day, index) in days" :key="index">
+          <template v-for="(day) in days" :key="index">
             <td
               :class="[
                 'total-cell',
@@ -71,7 +71,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed } from "vue";
+import { ref } from "vue";
 
 interface Day {
   date: number;
@@ -118,7 +118,7 @@ const days = ref(generateDays());
 const issues = ref<Issue[]>(
   Array(13)
     .fill(null)
-    .map((_, index) => ({
+    .map((_) => ({
       id: "ATL-0011",
       summary: "Issue summary",
       logged: 4.5,
