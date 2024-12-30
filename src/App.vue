@@ -47,7 +47,7 @@ import SideBar from "./components/SideBar.vue";
   margin-left: 56px;
   flex: 1;
   padding: 20px;
-  background-color: #f4f5f7;
+  background-color: #ffffff;
   height: calc(100vh - 56px);
 }
 </style>
