@@ -1,61 +1,70 @@
 <script setup lang="ts">
-import { ref, onMounted, onBeforeUnmount } from 'vue'
-import { Icon } from '@iconify/vue'
+import { ref, onMounted, onBeforeUnmount } from "vue";
+import { Icon } from "@iconify/vue";
 
 interface DropdownProps {
-  options: Array<string | { id: string; label: string }>
-  label?: string
-  initialValue?: string
-  width?: string
-  variant?: 'default' | 'jira'
+  options: Array<string | { id: string; label: string }>;
+  label?: string;
+  initialValue?: string;
+  width?: string;
+  variant?: "default" | "jira";
 }
 
 const props = withDefaults(defineProps<DropdownProps>(), {
   options: () => [],
-  label: '',
-  initialValue: '',
-  width: '120px',
-  variant: 'default'
-})
+  label: "",
+  initialValue: "",
+  width: "120px",
+  variant: "default",
+});
 
 const emit = defineEmits<{
-  'option-selected': [value: string]
-}>()
+  "option-selected": [value: string];
+}>();
 
-const isOpen = ref(false)
-const selectedOption = ref(props.initialValue || (typeof props.options[0] === 'string' ? props.options[0] : props.options[0].label))
+const isOpen = ref(false);
+const selectedOption = ref(
+  props.initialValue ||
+    (typeof props.options[0] === "string"
+      ? props.options[0]
+      : props.options[0].label),
+);
 
 const toggleDropdown = () => {
-  isOpen.value = !isOpen.value
-}
+  isOpen.value = !isOpen.value;
+};
 
-const getOptionLabel = (option: string | { id: string; label: string }): string => {
-  return typeof option === 'string' ? option : option.label
-}
+const getOptionLabel = (
+  option: string | { id: string; label: string },
+): string => {
+  return typeof option === "string" ? option : option.label;
+};
 
-const getOptionValue = (option: string | { id: string; label: string }): string => {
-  return typeof option === 'string' ? option : option.id
-}
+const getOptionValue = (
+  option: string | { id: string; label: string },
+): string => {
+  return typeof option === "string" ? option : option.id;
+};
 
 const selectOption = (option: string | { id: string; label: string }) => {
-  selectedOption.value = getOptionLabel(option)
-  isOpen.value = false
-  emit('option-selected', getOptionValue(option))
-}
+  selectedOption.value = getOptionLabel(option);
+  isOpen.value = false;
+  emit("option-selected", getOptionValue(option));
+};
 
 const handleClickOutside = (e: MouseEvent) => {
-  if (!(e.target as Element).closest('.dropdown-container')) {
-    isOpen.value = false
+  if (!(e.target as Element).closest(".dropdown-container")) {
+    isOpen.value = false;
   }
-}
+};
 
 onMounted(() => {
-  document.addEventListener('click', handleClickOutside)
-})
+  document.addEventListener("click", handleClickOutside);
+});
 
 onBeforeUnmount(() => {
-  document.removeEventListener('click', handleClickOutside)
-})
+  document.removeEventListener("click", handleClickOutside);
+});
 </script>
 
 <template>
@@ -97,40 +106,41 @@ onBeforeUnmount(() => {
 
   &.jira-style {
     .dropdown-label {
-      color: #42526E;
+      color: #42526e;
       font-weight: 500;
     }
 
     .dropdown-toggle {
-      border: 2px solid #DFE1E6;
+      border: 2px solid #dfe1e6;
       border-radius: 3px;
-      color: #42526E;
+      color: #42526e;
 
       &:hover {
-        background-color: #F4F5F7;
+        background-color: #f4f5f7;
       }
 
       &.active {
-        border-color: #4C9AFF;
+        border-color: #4c9aff;
         box-shadow: 0 0 0 2px rgba(76, 154, 255, 0.2);
       }
     }
 
     .dropdown-menu {
-      box-shadow: 0 4px 8px -2px rgba(9, 30, 66, 0.25),
-                  0 0 1px rgba(9, 30, 66, 0.31);
+      box-shadow:
+        0 4px 8px -2px rgba(9, 30, 66, 0.25),
+        0 0 1px rgba(9, 30, 66, 0.31);
     }
 
     .dropdown-item {
-      color: #42526E;
+      color: #42526e;
 
       &:hover {
-        background-color: #F4F5F7;
+        background-color: #f4f5f7;
       }
 
       &.selected {
-        background-color: #DEEBFF;
-        color: #0052CC;
+        background-color: #deebff;
+        color: #0052cc;
       }
     }
   }

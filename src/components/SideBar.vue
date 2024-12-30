@@ -25,7 +25,12 @@ const setActive = (item: string) => {
             :class="{ 'sidebar__link--active': activeItem === link.title }"
             @click="setActive(link.title)"
           >
-            <Icon :icon="link.icon" height="25" width="25" class="sidebar__icon" />
+            <Icon
+              :icon="link.icon"
+              height="25"
+              width="25"
+              class="sidebar__icon"
+            />
             <span class="sidebar__tooltip">{{ link.title }}</span>
           </router-link>
         </li>

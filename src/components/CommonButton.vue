@@ -1,7 +1,7 @@
 <script setup lang="ts">
 interface ButtonProps {
   variant?: "primary" | "secondary" | "outline";
-  size?: "xsm"| "sm" | "md" | "lg";
+  size?: "xsm" | "sm" | "md" | "lg";
   disabled?: boolean;
   loading?: boolean;
   type?: "button" | "submit" | "reset";

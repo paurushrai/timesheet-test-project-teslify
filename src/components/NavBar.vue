@@ -48,12 +48,12 @@ onMounted(() => {
           >
             {{ navLink.name }}
             <Icon
-            v-if="navLink.subRoute && navLink.subRoute.length"
-            icon="mingcute:down-fill"
-            height="20"
-            width="20"
-            class="navbar__icon"
-          />
+              v-if="navLink.subRoute && navLink.subRoute.length"
+              icon="mingcute:down-fill"
+              height="20"
+              width="20"
+              class="navbar__icon"
+            />
           </router-link>
         </li>
       </ul>

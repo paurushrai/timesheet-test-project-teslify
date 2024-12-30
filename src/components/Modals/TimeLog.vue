@@ -11,7 +11,7 @@ interface Emits {
   (e: "close"): void;
   (
     e: "submit",
-    data: { date: string; time: string; description: string }
+    data: { date: string; time: string; description: string },
   ): void;
 }
 
@@ -110,8 +110,12 @@ const handleClose = () => {
       </div>
 
       <div class="modal__footer">
-        <CommonButton variant="secondary" size="sm" @click="handleClose">Cancel</CommonButton>
-        <CommonButton variant="primary" size="sm" @click="handleSubmit">Log Time</CommonButton>
+        <CommonButton variant="secondary" size="sm" @click="handleClose"
+          >Cancel</CommonButton
+        >
+        <CommonButton variant="primary" size="sm" @click="handleSubmit"
+          >Log Time</CommonButton
+        >
       </div>
     </div>
   </div>

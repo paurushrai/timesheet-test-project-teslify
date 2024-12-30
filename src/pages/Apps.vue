@@ -1,13 +1,9 @@
-<script lang="js">
-
-</script>
+<script lang="js"></script>
 
 <template>
   <div class="apps">
-    <h1>Apps
-    </h1>
+    <h1>Apps</h1>
   </div>
 </template>
 
-<style lang="scss">
-</style>
+<style lang="scss"></style>

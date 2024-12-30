@@ -1,6 +1,4 @@
-<script lang="js">
-
-</script>
+<script lang="js"></script>
 
 <template>
   <div class="filters">
@@ -8,5 +6,4 @@
   </div>
 </template>
 
-<style lang="scss">
-</style>
+<style lang="scss"></style>

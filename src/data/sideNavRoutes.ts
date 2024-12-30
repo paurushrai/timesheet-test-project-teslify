@@ -1,23 +1,23 @@
 const sideNavRoutes = [
   {
-    title: 'Tasks',
-    route: '#',
-    icon: 'fluent:calendar-todo-32-light',
+    title: "Tasks",
+    route: "#",
+    icon: "fluent:calendar-todo-32-light",
   },
   {
-    title: 'Documents',
-    route: '#',
-    icon: 'mdi:clipboard-text-history',
+    title: "Documents",
+    route: "#",
+    icon: "mdi:clipboard-text-history",
   },
   {
-    title: 'Team',
-    route: '#',
-    icon: 'ri:team-fill',
+    title: "Team",
+    route: "#",
+    icon: "ri:team-fill",
   },
   {
-    title: 'Settings',
-    route: '#',
-    icon: 'weui:setting-filled',
+    title: "Settings",
+    route: "#",
+    icon: "weui:setting-filled",
   },
 ];
 

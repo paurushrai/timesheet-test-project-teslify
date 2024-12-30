@@ -55,7 +55,7 @@ const issues = ref<Issue[]>(
         "2024-01-10": 4.5,
         "2024-01-15": 4.5,
       },
-    }))
+    })),
 );
 
 const isWeekend = (day: Day) => {
@@ -97,7 +97,7 @@ const getTotalForDay = (day: Day) => {
         <tr>
           <th class="issue-header">Issue</th>
           <th class="logged-header">Logged</th>
-          <template v-for="(day) in days" :key="index">
+          <template v-for="day in days" :key="index">
             <th
               :class="[
                 'day-header',
@@ -146,7 +146,7 @@ const getTotalForDay = (day: Day) => {
         <tr class="total-row">
           <td>Total</td>
           <td>73.75</td>
-          <template v-for="(day) in days" :key="index">
+          <template v-for="day in days" :key="index">
             <td
               :class="[
                 'total-cell',

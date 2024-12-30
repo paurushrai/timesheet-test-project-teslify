@@ -87,12 +87,12 @@ const handleSelectedGroupBy = (value: any) => {
       <DatePicker />
       <div class="filters__group">
         <span>Group by</span>
-          <CommonDropdown
-            :options="groupingOptions"
-            @option-selected="handleSelectedGroupBy"
-            width="160px"
-          />
-        </div>
+        <CommonDropdown
+          :options="groupingOptions"
+          @option-selected="handleSelectedGroupBy"
+          width="160px"
+        />
+      </div>
     </div>
     <div class="time-log-sheet-container">
       <TimeLogSheet />
@@ -165,7 +165,7 @@ const handleSelectedGroupBy = (value: any) => {
   }
 
   .time-log-sheet-container {
-    overflow:scroll ;
+    overflow: scroll;
   }
 }
 </style>

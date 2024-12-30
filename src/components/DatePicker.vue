@@ -35,7 +35,7 @@ const formatInputDate = (date: Date): string => {
 
 const dateRange = computed(() => {
   return `${formatDisplayDate(startDate.value)} - ${formatDisplayDate(
-    endDate.value
+    endDate.value,
   )}`;
 });
 
@@ -87,13 +87,13 @@ const months = computed(() => {
     {
       label: new Date(
         currentViewMonth.value.getFullYear(),
-        currentViewMonth.value.getMonth() + 1
+        currentViewMonth.value.getMonth() + 1,
       ).toLocaleString("default", { month: "long", year: "numeric" }),
       days: getMonthDays(
         new Date(
           currentViewMonth.value.getFullYear(),
-          currentViewMonth.value.getMonth() + 1
-        )
+          currentViewMonth.value.getMonth() + 1,
+        ),
       ),
     },
   ];
@@ -134,13 +134,13 @@ const handleQuickSelect = (action: string) => {
   switch (action) {
     case "currentWeek":
       startDate.value = new Date(
-        today.setDate(today.getDate() - currentDay + 1)
+        today.setDate(today.getDate() - currentDay + 1),
       );
       endDate.value = new Date(today.setDate(today.getDate() + 6));
       break;
     case "lastWeek":
       startDate.value = new Date(
-        today.setDate(today.getDate() - currentDay - 6)
+        today.setDate(today.getDate() - currentDay - 6),
       );
       endDate.value = new Date(today.setDate(today.getDate() + 6));
       break;
@@ -155,7 +155,11 @@ const handleQuickSelect = (action: string) => {
     case "currentQuarter":
       const currentQuarter = Math.floor(today.getMonth() / 3);
       startDate.value = new Date(today.getFullYear(), currentQuarter * 3, 1);
-      endDate.value = new Date(today.getFullYear(), (currentQuarter + 1) * 3, 0);
+      endDate.value = new Date(
+        today.getFullYear(),
+        (currentQuarter + 1) * 3,
+        0,
+      );
       break;
     case "lastQuarter":
       const lastQuarter = Math.floor(today.getMonth() / 3) - 1;
@@ -164,12 +168,12 @@ const handleQuickSelect = (action: string) => {
       startDate.value = new Date(
         today.getFullYear() + yearAdjustment,
         adjustedQuarter * 3,
-        1
+        1,
       );
       endDate.value = new Date(
         today.getFullYear() + yearAdjustment,
         (adjustedQuarter + 1) * 3,
-        0
+        0,
       );
       break;
   }
@@ -180,7 +184,7 @@ const navigateMonth = (direction: number) => {
   currentViewMonth.value = new Date(
     currentViewMonth.value.getFullYear(),
     currentViewMonth.value.getMonth() + direction,
-    1
+    1,
   );
 };
 
