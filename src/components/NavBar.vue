@@ -14,7 +14,6 @@ const activeItem = ref(navRoutes[0].name);
 
 const setActive = (item: string) => {
   activeItem.value = item;
-  router.push("/YourWork");
 };
 
 onMounted(() => {

@@ -99,7 +99,7 @@ const generateDays = () => {
   const today = new Date();
   const startDate = new Date(today.getFullYear(), today.getMonth(), 1);
 
-  for (let i = 0; i < 30; i++) {
+  for (let i = 0; i < 23; i++) {
     const currentDate = new Date(startDate);
     currentDate.setDate(startDate.getDate() + i);
     days.push({
@@ -170,7 +170,7 @@ const getTotalForDay = (day: Day) => {
   table {
     width: 100%;
     border-collapse: collapse;
-    font-size: 12px;
+    font-size: 13px;
 
     th,
     td {
