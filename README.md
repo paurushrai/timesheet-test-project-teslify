@@ -1,5 +1,48 @@
-# Vue 3 + TypeScript + Vite
+# Timesheet Test Project - Teslify
 
-This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+## Setup and Run the Project Locally
 
-Learn more about the recommended Project Setup and IDE Support in the [Vue Docs TypeScript Guide](https://vuejs.org/guide/typescript/overview.html#project-setup).
+### Prerequisites
+
+- Node.js (v14.x or later)
+- npm (v6.x or later) or yarn (v1.x or later)
+- Git
+
+### Installation
+
+1. **Clone the repository:**
+
+```bash
+git clone https://github.com/your-username/timesheet-test-project-teslify.git
+cd timesheet-test-project-teslify
+```
+
+2. **Install dependencies:**
+
+Using npm:
+
+```bash
+npm install
+```
+
+### Running the Project
+
+1. **Start the development server:**
+
+Using npm:
+
+```bash
+npm run dev
+```
+
+1. **Open your browser and navigate to localhost link in terminal**
+
+### Building for Production
+
+1. **Build the project:**
+
+Using npm:
+
+```bash
+npm run build
+```
