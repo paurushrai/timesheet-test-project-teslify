@@ -7,6 +7,7 @@ import TimeLog from "../components/Modals/TimeLog.vue";
 import CommonDropdown from "../components/CommonDropdown.vue";
 import CommonButton from "../components/CommonButton.vue";
 import DatePicker from "../components/DatePicker.vue";
+import TimeLogSheet from "../components/TimeLogSheet.vue";
 
 const userName = ref("Divya Shah");
 const showModal = ref(false);
@@ -93,6 +94,9 @@ const handleSelectedGroupBy = (value: any) => {
           />
         </div>
     </div>
+    <div class="time-log-sheet-container">
+      <TimeLogSheet />
+    </div>
   </div>
 </template>
 
@@ -156,7 +160,12 @@ const handleSelectedGroupBy = (value: any) => {
       gap: 0.5rem;
       align-items: center;
       font-size: 12px;
+      padding-bottom: 20px;
     }
+  }
+
+  .time-log-sheet-container {
+    overflow:scroll ;
   }
 }
 </style>
