@@ -1,75 +1,3 @@
-<template>
-  <div class="time-tracking-table">
-    <table>
-      <thead>
-        <tr>
-          <th class="issue-header">Issue</th>
-          <th class="logged-header">Logged</th>
-          <template v-for="(day) in days" :key="index">
-            <th
-              :class="[
-                'day-header',
-                { weekend: isWeekend(day), today: isToday(day) },
-              ]"
-            >
-              <div class="day-name">{{ day.dayName }}</div>
-              <div class="day-number">{{ day.date }}</div>
-            </th>
-          </template>
-        </tr>
-      </thead>
-      <tbody>
-        <tr
-          v-for="(issue, issueIndex) in issues"
-          :key="issueIndex"
-          :class="{
-            'highlighted-row':
-              selectedCell && selectedCell.issueIndex === issueIndex,
-          }"
-        >
-          <td class="issue-cell">
-            <div class="issue-content">
-              <div class="lightning-icon">⚡</div>
-              <span class="issue-id">{{ issue.id }}</span>
-              <span class="issue-summary">{{ issue.summary }}</span>
-            </div>
-          </td>
-          <td class="logged-cell">{{ issue.logged }}</td>
-          <template v-for="(day, dayIndex) in days" :key="dayIndex">
-            <td
-              :class="[
-                'time-cell',
-                {
-                  weekend: isWeekend(day),
-                  today: isToday(day),
-                  'highlighted-cell': isSelectedCell(issueIndex, dayIndex),
-                },
-              ]"
-              @click="selectCell(issueIndex, dayIndex)"
-            >
-              {{ getTimeForDay(issue, day) }}
-            </td>
-          </template>
-        </tr>
-        <tr class="total-row">
-          <td>Total</td>
-          <td>73.75</td>
-          <template v-for="(day) in days" :key="index">
-            <td
-              :class="[
-                'total-cell',
-                { weekend: isWeekend(day), today: isToday(day) },
-              ]"
-            >
-              {{ getTotalForDay(day) }}
-            </td>
-          </template>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-</template>
-
 <script setup lang="ts">
 import { ref } from "vue";
 
@@ -161,6 +89,78 @@ const getTotalForDay = (day: Day) => {
   }, 0);
 };
 </script>
+
+<template>
+  <div class="time-tracking-table">
+    <table>
+      <thead>
+        <tr>
+          <th class="issue-header">Issue</th>
+          <th class="logged-header">Logged</th>
+          <template v-for="(day) in days" :key="index">
+            <th
+              :class="[
+                'day-header',
+                { weekend: isWeekend(day), today: isToday(day) },
+              ]"
+            >
+              <div class="day-name">{{ day.dayName }}</div>
+              <div class="day-number">{{ day.date }}</div>
+            </th>
+          </template>
+        </tr>
+      </thead>
+      <tbody>
+        <tr
+          v-for="(issue, issueIndex) in issues"
+          :key="issueIndex"
+          :class="{
+            'highlighted-row':
+              selectedCell && selectedCell.issueIndex === issueIndex,
+          }"
+        >
+          <td class="issue-cell">
+            <div class="issue-content">
+              <div class="lightning-icon">⚡</div>
+              <span class="issue-id">{{ issue.id }}</span>
+              <span class="issue-summary">{{ issue.summary }}</span>
+            </div>
+          </td>
+          <td class="logged-cell">{{ issue.logged }}</td>
+          <template v-for="(day, dayIndex) in days" :key="dayIndex">
+            <td
+              :class="[
+                'time-cell',
+                {
+                  weekend: isWeekend(day),
+                  today: isToday(day),
+                  'highlighted-cell': isSelectedCell(issueIndex, dayIndex),
+                },
+              ]"
+              @click="selectCell(issueIndex, dayIndex)"
+            >
+              {{ getTimeForDay(issue, day) }}
+            </td>
+          </template>
+        </tr>
+        <tr class="total-row">
+          <td>Total</td>
+          <td>73.75</td>
+          <template v-for="(day) in days" :key="index">
+            <td
+              :class="[
+                'total-cell',
+                { weekend: isWeekend(day), today: isToday(day) },
+              ]"
+            >
+              {{ getTotalForDay(day) }}
+            </td>
+          </template>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</template>
 
 <style lang="scss" scoped>
 .time-tracking-table {
