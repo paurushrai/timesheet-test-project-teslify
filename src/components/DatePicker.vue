@@ -534,13 +534,13 @@ const handleApply = () => {
   }
 
   &.range-start {
-    background: #0052cc;
+    background: #45526c;
     color: white;
     border-radius: 4px 0 0 4px;
   }
 
   &.range-end {
-    background: #0052cc;
+    background: #45526c;
     color: white;
     border-radius: 0 4px 4px 0;
   }
